@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val textView = TextView(this)
         textView.text = "Select a Color" // set the text vewi text
         textView.setTypeface(textView.getTypeface(), Typeface.BOLD);
-        textView.setTextColor(Color.parseColor("#FFFFFF"));
         textView.id = View.generateViewId()
         constraintLayout.addView(textView) // add the text view to the layout
         setContentView(constraintLayout) //add the layout to the activity
