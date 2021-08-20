@@ -4,19 +4,11 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import android.graphics.drawable.GradientDrawable
-import android.os.Build
-
-
-
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +17,6 @@ class MainActivity : AppCompatActivity() {
         //setContentView(R.layout.activity_main)
 
         val constraintLayout = ConstraintLayout(this)
-        constraintLayout.setBackgroundColor(0xFF00FF00.toInt())
         constraintLayout.id = View.generateViewId()
 
         val textView = TextView(this)
@@ -78,20 +69,20 @@ class MainActivity : AppCompatActivity() {
         constraintSet.constrainHeight(greenButton.id, ConstraintSet.WRAP_CONTENT) //wrap
         constraintSet.constrainWidth(greenButton.id, ConstraintSet.WRAP_CONTENT) //wrap
         //Match bottom, top, left, and right. equal tension between all places textV in center
-        constraintSet.connect(textView.id, ConstraintSet.BOTTOM,
+        constraintSet.connect(blueButton.id, ConstraintSet.BOTTOM,
             pid, ConstraintSet.BOTTOM)
-        constraintSet.connect(textView.id, ConstraintSet.TOP,
+        constraintSet.connect(blueButton.id, ConstraintSet.TOP,
             pid, ConstraintSet. TOP)
-        constraintSet.connect(textView.id, ConstraintSet.LEFT,
-            pid, ConstraintSet.LEFT)
-        constraintSet.connect(textView.id, ConstraintSet.RIGHT,
-            pid, ConstraintSet.RIGHT)
-
         constraintSet.connect(blueButton.id, ConstraintSet.LEFT,
             pid, ConstraintSet.LEFT)
         constraintSet.connect(blueButton.id, ConstraintSet.RIGHT,
             pid, ConstraintSet.RIGHT)
-        constraintSet.connect(blueButton.id, ConstraintSet.TOP, textView.id, ConstraintSet.BOTTOM)
+
+        constraintSet.connect(textView.id, ConstraintSet.LEFT,
+            pid, ConstraintSet.LEFT)
+        constraintSet.connect(textView.id, ConstraintSet.RIGHT,
+            pid, ConstraintSet.RIGHT)
+        constraintSet.connect(textView.id, ConstraintSet.BOTTOM, blueButton.id, ConstraintSet.TOP)
 
         constraintSet.connect(redButton.id, ConstraintSet.LEFT,
             pid, ConstraintSet.LEFT)
@@ -104,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         constraintSet.connect(greenButton.id, ConstraintSet.RIGHT,
             pid, ConstraintSet.RIGHT)
         constraintSet.connect(greenButton.id, ConstraintSet.TOP, redButton.id, ConstraintSet.BOTTOM)
+
 
         constraintSet.applyTo(constraintLayout) //apply this to the layout container
 
